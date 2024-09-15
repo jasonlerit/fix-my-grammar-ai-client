@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
+import { toast } from "@/hooks/use-toast"
 import { useForm } from "@tanstack/react-form"
 import { useMutation } from "@tanstack/react-query"
 import { zodValidator } from "@tanstack/zod-form-adapter"
@@ -44,6 +45,13 @@ export default function Home() {
   const mutation = useMutation({
     mutationKey: ["prompt"],
     mutationFn: generateText,
+    onError: () => {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      })
+    },
     onSuccess: (data) => {
       setSuggestions(data.suggestions)
     },
