@@ -6,7 +6,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons"
 export const Navbar = () => {
   return (
     <header>
-      <div className='container mx-auto h-14 flex justify-between items-center'>
+      <div className='container mx-auto h-14 flex justify-between items-center px-4 sm:py-0'>
         <span className='font-bold'>Fix My Grammar AI</span>
         <div className='flex items-center gap-1'>
           <Button asChild variant='ghost'>
