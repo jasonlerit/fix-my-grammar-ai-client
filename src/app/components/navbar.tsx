@@ -8,10 +8,10 @@ export const Navbar = () => {
     <header>
       <div className='container mx-auto h-14 flex justify-between items-center'>
         <span className='font-bold'>Fix My Grammar AI</span>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-1'>
           <Button asChild variant='ghost'>
             <Link href='https://github.com/jatnerubia/fix-my-grammar-ai-client'>
-              <GitHubLogoIcon />
+              <GitHubLogoIcon className='h-[1.2rem] w-[1.2rem]' />
             </Link>
           </Button>
           <ModeToggle />
