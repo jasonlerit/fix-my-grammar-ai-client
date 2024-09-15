@@ -4,7 +4,7 @@
 ## 💻 Tech Stack
 > - TypeScript
 > - Next.js
-> - Tailwindcss
+> - Tailwind CSS
 > - shadcn/ui
 > - Zod
 > - TanStack Query
