@@ -1,7 +1,7 @@
-import Link from "next/link"
-import { ModeToggle } from "./mode-toggle"
 import { Button } from "@/components/ui/button"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
+import Link from "next/link"
+import { ModeToggle } from "./mode-toggle"
 
 export const Navbar = () => {
   return (

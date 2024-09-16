@@ -1,10 +1,10 @@
+import { Navbar } from "@/components/shared/navbar"
+import { ReactQueryClientProvider } from "@/components/shared/react-query-client-provider"
+import { ThemeProvider } from "@/components/shared/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
-import { ReactQueryClientProvider } from "./components/react-query-client-provider"
-import { ThemeProvider } from "./components/theme-provider"
-import { Navbar } from "./components/navbar"
-import { Toaster } from "@/components/ui/toaster"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
