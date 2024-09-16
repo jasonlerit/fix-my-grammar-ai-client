@@ -79,74 +79,78 @@ export default function Home() {
   }
 
   return (
-    <div className='max-w-4xl mx-auto h-[calc(100vh_-_56px)] flex flex-col justify-center items-center gap-4 p-4'>
-      <div className='flex-1 w-full flex flex-col gap-4'>
-        {suggestions.map((suggestion, index) => (
-          <Card key={index}>
-            <CardContent className='flex justify-between items-start gap-4 p-4'>
-              <p>{suggestion}</p>
-              <Button
-                variant='ghost'
-                onClick={() => handleCopy(index, suggestion)}
-                disabled={copiedItems.includes(index)}
-              >
-                {copiedItems.includes(index) ? <LuCheck /> : <LuCopy />}
-              </Button>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-      <form
-        className='w-full flex items-start gap-2'
-        onSubmit={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          form.handleSubmit()
-        }}
-      >
-        <form.Field
-          name='prompt'
-          validators={{
-            onChange: z
-              .string()
-              .min(1, { message: "Must be at least 1 character." })
-              .max(2000, { message: "Must be no more than 2000 characters." }),
+    <div className='h-dvh'>
+      <div className='h-full flex flex-col gap-4 pt-14 pb-4'>
+        <div className='flex-1 overflow-y-auto'>
+          <div className='container mx-auto lg:max-w-4xl flex flex-col gap-4 px-4'>
+            {suggestions.map((suggestion, index) => (
+              <Card key={index}>
+                <CardContent className='flex justify-between items-start gap-4 p-4'>
+                  <p>{suggestion}</p>
+                  <Button
+                    variant='ghost'
+                    onClick={() => handleCopy(index, suggestion)}
+                    disabled={copiedItems.includes(index)}
+                  >
+                    {copiedItems.includes(index) ? <LuCheck /> : <LuCopy />}
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+        <form
+          className='container mx-auto lg:max-w-4xl flex items-start gap-2 px-4'
+          onSubmit={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            form.handleSubmit()
           }}
         >
-          {(field) => (
-            <div className='w-full flex flex-col gap-1'>
-              <Textarea
-                className='w-full resize-none'
-                name={field.name}
-                value={field.state.value}
-                placeholder='Type your message here.'
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
-                onKeyDown={handleKeyDown}
-                disabled={mutation.isPending}
-              />
-              {field.state.meta.errors ? (
-                <em role='alert' className='text-xs'>
-                  {field.state.meta.errors.join(", ")}
-                </em>
-              ) : null}
-            </div>
-          )}
-        </form.Field>
-        <form.Subscribe
-          selector={(state) => [state.canSubmit, state.isTouched, state.isSubmitting]}
-        >
-          {([canSubmit, isTouched, isSubmitting]) => (
-            <Button type='submit' disabled={!canSubmit || !isTouched || mutation.isPending}>
-              {isSubmitting || mutation.isPending ? (
-                <LuLoader2 className='animate-spin' />
-              ) : (
-                <LuSend />
-              )}
-            </Button>
-          )}
-        </form.Subscribe>
-      </form>
+          <form.Field
+            name='prompt'
+            validators={{
+              onChange: z
+                .string()
+                .min(1, { message: "Must be at least 1 character." })
+                .max(2000, { message: "Must be no more than 2000 characters." }),
+            }}
+          >
+            {(field) => (
+              <div className='w-full flex flex-col gap-1'>
+                <Textarea
+                  className='w-full resize-none'
+                  name={field.name}
+                  value={field.state.value}
+                  placeholder='Type your message here.'
+                  onBlur={field.handleBlur}
+                  onChange={(e) => field.handleChange(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  disabled={mutation.isPending}
+                />
+                {field.state.meta.errors ? (
+                  <em role='alert' className='text-xs'>
+                    {field.state.meta.errors.join(", ")}
+                  </em>
+                ) : null}
+              </div>
+            )}
+          </form.Field>
+          <form.Subscribe
+            selector={(state) => [state.canSubmit, state.isTouched, state.isSubmitting]}
+          >
+            {([canSubmit, isTouched, isSubmitting]) => (
+              <Button type='submit' disabled={!canSubmit || !isTouched || mutation.isPending}>
+                {isSubmitting || mutation.isPending ? (
+                  <LuLoader2 className='animate-spin' />
+                ) : (
+                  <LuSend />
+                )}
+              </Button>
+            )}
+          </form.Subscribe>
+        </form>
+      </div>
     </div>
   )
 }
