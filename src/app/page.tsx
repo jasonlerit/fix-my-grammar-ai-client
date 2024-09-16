@@ -89,8 +89,10 @@ export default function Home() {
                   <p>{suggestion}</p>
                   <Button
                     variant='ghost'
+                    size='icon'
                     onClick={() => handleCopy(index, suggestion)}
                     disabled={copiedItems.includes(index)}
+                    aria-label='copy button'
                   >
                     {copiedItems.includes(index) ? <LuCheck /> : <LuCopy />}
                   </Button>
@@ -140,7 +142,11 @@ export default function Home() {
             selector={(state) => [state.canSubmit, state.isTouched, state.isSubmitting]}
           >
             {([canSubmit, isTouched, isSubmitting]) => (
-              <Button type='submit' disabled={!canSubmit || !isTouched || mutation.isPending}>
+              <Button
+                type='submit'
+                disabled={!canSubmit || !isTouched || mutation.isPending}
+                aria-label='submit button'
+              >
                 {isSubmitting || mutation.isPending ? (
                   <LuLoader2 className='animate-spin' />
                 ) : (

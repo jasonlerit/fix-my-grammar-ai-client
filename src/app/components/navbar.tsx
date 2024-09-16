@@ -9,7 +9,7 @@ export const Navbar = () => {
       <nav className='container mx-auto h-14 flex justify-between items-center px-4'>
         <span className='font-bold'>Fix My Grammar AI</span>
         <div className='flex items-center gap-1'>
-          <Button asChild variant='ghost' size='icon'>
+          <Button asChild variant='ghost' size='icon' aria-label='github link'>
             <Link href='https://github.com/jatnerubia/fix-my-grammar-ai-client'>
               <GitHubLogoIcon className='h-[1.2rem] w-[1.2rem]' />
             </Link>
