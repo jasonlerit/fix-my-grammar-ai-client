@@ -1,5 +1,5 @@
-import { SuggestionContent } from "./components/suggestion-content"
-import { SuggestionForm } from "./components/suggestion-form"
+import { SuggestionContent } from "@/app/components/suggestion-content"
+import { SuggestionForm } from "@/app/components/suggestion-form"
 
 export default function Home() {
   return (
