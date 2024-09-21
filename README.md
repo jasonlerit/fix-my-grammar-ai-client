@@ -9,3 +9,4 @@
 > - Zod
 > - TanStack Query
 > - TanStack Form
+> - Zustand
