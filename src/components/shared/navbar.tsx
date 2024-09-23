@@ -11,7 +11,7 @@ export const Navbar = () => {
         <div className='flex items-center gap-1'>
           <Button asChild variant='ghost' size='icon' aria-label='github link'>
             <Link href='https://github.com/jatnerubia/fix-my-grammar-ai-client'>
-              <GitHubLogoIcon className='h-[1.2rem] w-[1.2rem]' />
+              <GitHubLogoIcon className='w-5 h-5' />
             </Link>
           </Button>
           <ModeToggle />
