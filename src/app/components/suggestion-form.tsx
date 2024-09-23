@@ -128,11 +128,6 @@ export const SuggestionForm = () => {
                 onKeyDown={handleKeyDown}
                 disabled={mutation.isPending}
               />
-              {field.state.meta.errors ? (
-                <em role='alert' className='text-xs'>
-                  {field.state.meta.errors.join(", ")}
-                </em>
-              ) : null}
             </div>
           )}
         </form.Field>
