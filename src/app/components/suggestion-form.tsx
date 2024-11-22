@@ -3,7 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/hooks/use-toast"
-import { useSuggestionStore } from "@/stores/use-suggestion-store"
+import { useSuggestionStore } from "@/stores/use-suggestion.store"
+import { TextGenerationType, useTextGenerationStore } from "@/stores/use-text-generation.store"
 import { useForm } from "@tanstack/react-form"
 import { useMutation } from "@tanstack/react-query"
 import { zodValidator } from "@tanstack/zod-form-adapter"
@@ -15,6 +16,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 interface FormData {
   prompt: string
+  type: TextGenerationType
 }
 
 async function generateText(formData: FormData) {
@@ -33,6 +35,7 @@ async function generateText(formData: FormData) {
 }
 
 export const SuggestionForm = () => {
+  const type = useTextGenerationStore((state) => state.type)
   const setSuggestions = useSuggestionStore((state) => state.setSuggestions)
   const [previousFormData, setPreviousFormData] = useState<FormData | null>(null)
   const [showRegenerateButton, setShowRegenerateButton] = useState<boolean>(false)
@@ -40,6 +43,7 @@ export const SuggestionForm = () => {
   const form = useForm({
     defaultValues: {
       prompt: "",
+      type,
     },
     onSubmit: async ({ value }) => {
       setSuggestions([])

@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { useSuggestionStore } from "@/stores/use-suggestion-store"
+import { useSuggestionStore } from "@/stores/use-suggestion.store"
 import { useState } from "react"
 import { LuCheck, LuCopy } from "react-icons/lu"
 
